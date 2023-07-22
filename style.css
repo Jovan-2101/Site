@@ -1,0 +1,70 @@
+body{
+ text-align: center;
+ background-color: rgba(24,26,27,255);
+ color: white;
+}
+ 
+.blok{
+ background-color: rgba(24,26,50,255);
+ width: 60%;
+ margin: 20px auto;
+ border-radius: 20px;
+ padding: 10px;
+ border: solid rgba(30,50,70,0.6); 10px;
+}
+
+pre{
+ text-align: start;
+ font-size:14px;
+ background-color: rgba(24,26,60,255);
+ border: solid rgba(30,50,70,0.6); 4px;
+ width: auto;
+ padding:10px;
+ border-radius:10px;
+ margin: auto;
+}
+
+button{
+ margin:10px;
+ border-radius:20px;
+ background-color: rgb(255);
+ border: solid rgba(255,255,255); 4px;
+ font-size:14px;
+ transition: 0.8s;
+}
+
+button:hover{
+ background-color: rgb(200,200,245);
+ border: solid rgb(200,200,255); 4px;
+}
+
+.animacija {
+  transform: scale(0.96);
+  transition: 0.8s;
+}
+
+
+.animacija.active {
+  transform: scale(1);
+}
+
+#opcije {
+  background-color: rgba(24,26,50,255);
+  border: solid rgba(30,50,70,0.6); 4px;
+  border-radius: 20px;
+  padding: 10px;
+  width:30%;
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+}
+
+#opcije *{
+ width:80%;
+ margin: 10px auto;
+}
+
+#opcije button{
+ width:60%;
+}
+

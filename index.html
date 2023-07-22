@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+ <html>
+  <head>
+   <title>
+    Sajt
+   </title>
+   <script async defer src="./app.js">
+   </script>
+   <link rel="stylesheet" href="./style.css"/>
+  </head>
+  <body>
+   <h1>Sajt</h1>
+   <div id="opcije">
+     <button id="dugmeSort">Sortirano od najnovijeg</button>
+    <div>
+     <label for="selectJezik">Odaberite programski jezik:</label>
+      <select id="selectJezik" onchange="filtrirajPoJeziku()">
+      <option value="svi">Svi jezici</option>
+      <option value="C">C</option>
+      <option value="Java">Java</option>
+     </select>
+    </div>
+    <div>
+     <label for="search">Pretraži zadatke po naslovu:</label>
+     <input type="text" id="search" oninput="filtrirajPoNaslovu()" />
+    </div>   
+   </div>
+   <div id="zadaci"></div>
+  </body>
+ </html>
