@@ -1,19 +1,7 @@
+import htmlSadrzaj from "./zadaci.js";
+
 const zadaci = document.querySelector("#zadaci");
 const naslov = document.querySelector("h1");
-
-fetch('./zadaci.js')
-  .then((response) => response.text())
-  .then((zadaciJSON) => {
-    // Parsiramo JSON string u JavaScript objekat
-    const htmlSadrzaj = JSON.parse(zadaciJSON);
-
-    // Sada možete raditi sa htmlSadrzaj objektom koji sadrži zadatke
-    console.log(htmlSadrzaj); // Ispisuje zadatke u konzoli
-  })
-  .catch((error) => console.error(error));
-
-
-
 
 
 let NewFirst = true; 

@@ -1,4 +1,4 @@
-const zadaci = [
+const htmlSadrzaj = [
    {
     naziv: "Ispis poruke 2",
     deskripcija: `Napisati program u Javi koji ispisuje poruku "321"`,
@@ -101,4 +101,4 @@ int main(){
   
 ];
 
-export default zadaciJSON;
+export default htmlSadrzaj;
