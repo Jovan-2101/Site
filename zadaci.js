@@ -1,5 +1,26 @@
 const htmlSadrzaj = [
    {
+    naziv: "Palindrom",
+    deskripcija: "Napisati program u JS koji provjerava da li je uneseni string palindrom ili ne",
+    jezik: "Javascript",
+    kod:
+`function isPalindrome(str) {
+  const cleanedStr = str.toLowerCase().replace(/[^a-z0-9]/g, '');
+  const reversedStr = cleanedStr.split('').reverse().join('');
+
+  return cleanedStr === reversedStr;
+}
+
+const inputText = prompt("Unesite tekst za provjeru palindroma:");
+if (inputText !== null) {
+  if (isPalindrome(inputText)) {
+    console.log("Uneseni tekst je palindrom!");
+  } else {
+    console.log("Uneseni tekst nije palindrom.");
+  }
+}`,
+   },
+   {
     naziv: "color.h",
     deskripcija: `Napisati biblioteku u C-u koja sluzi za manipulisanje bojama konzole`,
     jezik: "C",

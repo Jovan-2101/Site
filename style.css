@@ -80,3 +80,12 @@ input{
  outline: none;
 }
 
+#jeziciInfo{
+ padding: 0px;
+ width: 30%;
+ position: absolute;
+ border-radius:20px;
+ background-color: rgba(24,26,50,255);
+ border: solid rgba(30,50,70,0.6); 4px;
+}
+
