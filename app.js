@@ -6,6 +6,14 @@ let NewFirst = true;
 // NAJSTARIJI = false
 // NAJNOVIJI = true
 
+function escapeHTML(str) { 
+  return str.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+htmlSadrzaj.forEach((zadatak) => { // zbog znakova'<' i '>'
+  zadatak.kod = escapeHTML(zadatak.kod);
+});
+
 function generisiBlok(i) {
   const zadatak = htmlSadrzaj[i];
   const div = document.createElement("div");
@@ -48,58 +56,6 @@ function generisiSelect() {
     selectJezik.appendChild(jezikOption);
   }
 }
-/*
-const nekiString = [
-"moj je tata",
-"vi se potrudite",
-"nema niko muda",
-"moj je tajo",
-"moj je stari",
-];
-const nekiOdgovor = [ 
-"Zlocinac iz rata",
-"Pa ga osudite",
-"Da vodi ga do suda",
-"Po Bosni osvaj'o",
-"Opasan u stvari",
-];
-const nekaBoja = [
-"red",
-"red",
-"red",
-"red",
-"red",
-];
-const nekiLink = [
-"https://www.youtube.com/watch?v=ETQmQ1Ixv5Y",
-"https://www.youtube.com/watch?v=ETQmQ1Ixv5Y",
-"https://www.youtube.com/watch?v=ETQmQ1Ixv5Y",
-"https://www.youtube.com/watch?v=ETQmQ1Ixv5Y",
-"https://www.youtube.com/watch?v=ETQmQ1Ixv5Y",
-]
-
-const searchInput = document.getElementById('search');
-
-searchInput.addEventListener("input", function () {
-    const uneseniTekst = searchInput.value.toLowerCase();
-    let pronasaoOdgovor = false;
-      
-    for (let i = 0; i < nekiString.length; i++) {
-      if (uneseniTekst === nekiString[i]) {
-        naslov.innerHTML = nekiOdgovor[i];
-        naslov.style.color = nekaBoja[i];
-        window.location.href = nekiLink[i];
-        pronasaoOdgovor = true;
-        break;
-      }
-    }
-
-    if (!pronasaoOdgovor) {
-      naslov.innerHTML = "Sajt";
-      naslov.style.color = "white";
-   }
-});
-*/
 
 function kopirajKod(buttonElement) {
   const preElement = buttonElement.previousElementSibling;
