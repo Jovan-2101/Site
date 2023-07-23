@@ -1,5 +1,3 @@
-import htmlSadrzaj from "./zadaci.js";
-
 const zadaci = document.querySelector("#zadaci");
 const naslov = document.querySelector("h1");
 
