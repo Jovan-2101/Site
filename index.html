@@ -4,7 +4,7 @@
    <title>
     Sajt
    </title>
-   <script async defer src="./app.js">
+   <script defer src="./app.js">
    </script>
    <link rel="stylesheet" href="./style.css"/>
   </head>
@@ -14,10 +14,7 @@
      <button id="dugmeSort">Sortirano od najnovijeg</button>
     <div>
      <label for="selectJezik">Odaberite programski jezik:</label>
-      <select id="selectJezik" onchange="filtrirajPoJeziku()">
-      <option value="svi">Svi jezici</option>
-      <option value="C">C</option>
-      <option value="Java">Java</option>
+      <select id="selectJezik" onchange="filtrirajPoJeziku()" >
      </select>
     </div>
     <div>

@@ -1,4 +1,10 @@
+html{
+ color-scheme: dark !important;
+ scrollbar-color: #454a4d #202324;
+}
+
 body{
+ margin:0px;
  text-align: center;
  background-color: rgba(24,26,27,255);
  color: white;
@@ -28,13 +34,13 @@ button{
  margin:10px;
  border-radius:20px;
  background-color: rgb(255);
- border: solid rgba(255,255,255); 4px;
+ border: solid rgba(30,50,70,0.6); 4px;
  font-size:14px;
  transition: 0.8s;
 }
 
 button:hover{
- background-color: rgb(200,200,245);
+ background-color: rgba(200,200,245,0.2);
  border: solid rgb(200,200,255); 4px;
 }
 
@@ -57,6 +63,7 @@ button:hover{
   display: flex;
   margin: auto;
   flex-direction: column;
+  transition: 1s;
 }
 
 #opcije *{
@@ -66,5 +73,10 @@ button:hover{
 
 #opcije button{
  width:60%;
+}
+
+input{
+ border-radius:4px;
+ outline: none;
 }
 

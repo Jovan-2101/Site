@@ -1,146 +1,47 @@
-const naslov = document.querySelector("title");
 const zadaci = document.querySelector("#zadaci");
+const naslov = document.querySelector("h1");
 
-//Dok se ne napravi API (koji ce biti NAPISAN U PROGRAMSKOM JEZIKU C), mora se koristiti ovaj nacin
-const htmlSadrzaj = [
-   {
-    naziv: "Ispis poruke 2",
-    deskripcija: `Napisati program u Javi koji ispisuje poruku "321"`,
-    jezik: "Java",
-    kod:
-`public class zadatak{
-	public static void main(Strings[] args){
-		System.out.print("321\\n");
-	}
-}`,
-  },
-  
-  {
-    naziv: "Ispis poruke 1",
-    deskripcija: `Napisati program u Javi koji ispisuje poruku "123"`,
-    jezik: "Java",
-    kod:
-`public class zadatak{
-	public static void main(Strings[] args){
-		System.out.print("123\\n");
-	}
-}`,
-  },
-  
-  {
-    naziv: "Zadatak 4",
-    deskripcija: 'Napisati program u C-u koji ispisuje poruku "MRS3"',
-    kod:
-`#include <stdio.h>
-int main(){
-  printf("MRS3");
-  return 0;
-}`,
-    jezik: "C",
-  },
+fetch('./zadaci.js')
+  .then((response) => response.text())
+  .then((zadaciJSON) => {
+    // Parsiramo JSON string u JavaScript objekat
+    const htmlSadrzaj = JSON.parse(zadaciJSON);
 
-  {
-  naziv: "Sortiranje niza",
-  deskripcija: "Napisati program u programskom jeziku C koji sortira niz brojeva od najmanjeg do najvećeg.",
-  jezik: "C",
-  kod: 
-`#include <stdio.h>
+    // Sada možete raditi sa htmlSadrzaj objektom koji sadrži zadatke
+    console.log(htmlSadrzaj); // Ispisuje zadatke u konzoli
+  })
+  .catch((error) => console.error(error));
 
-void sortirajNiz(int niz[], int duzina) {
-    int temp;
-    for (int i = 0; i < duzina - 1; i++) {
-        for (int j = 0; j < duzina - i - 1; j++) {
-            if (niz[j] > niz[j + 1]) {
-                temp = niz[j];
-                niz[j] = niz[j + 1];
-                niz[j + 1] = temp;
-            }
-        }
-    }
-}
 
-int main() {
-    int niz[] = {5, 2, 9, 1, 5, 6};
-    int duzina = sizeof(niz) / sizeof(niz[0]);
 
-    printf("Nesortirani niz: ");
-    for (int i = 0; i < duzina; i++) {
-        printf("%d ", niz[i]);
-    }
-
-    sortirajNiz(niz, duzina);
-
-    printf("\\nSortirani niz: ");
-    for (int i = 0; i < duzina; i++) {
-        printf("%d ", niz[i]);
-    }
-
-    return 0;
-}`,
-  },
-  
-  {
-    naziv: "Zadatak 2",
-    deskripcija: 'Napisati program u C-u koji ispisuje poruku "MRS2"',
-    jezik: "C",
-    kod:
-`#include <stdio.h>
-int main(){
-  printf("MRS2");
-  return 0;
-}`,
-  },
-  
-  {
-    naziv: "Zadatak 1",
-    deskripcija: 'Napisati program u C-u koji ispisuje poruku "MRS1"',
-    jezik: "C",
-    kod: 
-`#include <stdio.h>
-int main(){
-  printf("MRS1");
-  return 0;
-}`,
-  },
-  
-];
 
 
 let NewFirst = true; 
 // NAJSTARIJI = false
 // NAJNOVIJI = true
 
-function mrs(i){
-const zadatak = htmlSadrzaj[i];
-      const div = document.createElement("div");
-      div.classList.add("blok");
+function generisiBlok(i) {
+  const zadatak = htmlSadrzaj[i];
+  const div = document.createElement("div");
+  div.classList.add("blok", "animacija");
 
-      const naslov = document.createElement("h2");
-      naslov.textContent = zadatak.naziv;
-      div.appendChild(naslov);
+  div.innerHTML = `
+    <h2>${zadatak.naziv}</h2>
+    <h4>${zadatak.deskripcija}</h4>
+    <pre>${zadatak.kod}</pre>
+    <button class="kopiraj-tekst">Kopiraj kod</button>
+  `;
 
-      const opis = document.createElement("h4");
-      opis.textContent = zadatak.deskripcija;
-      div.appendChild(opis);
+  const kopirajButton = div.querySelector(".kopiraj-tekst");
+  kopirajButton.onclick = function () {
+    kopirajKod(this);
+  };
 
-      const kodPre = document.createElement("pre");
-      kodPre.textContent = zadatak.kod;
-      div.appendChild(kodPre);
+  zadaci.appendChild(div);
 
-      const kopirajButton = document.createElement("button");
-      kopirajButton.classList.add("kopiraj-tekst");
-      kopirajButton.textContent = "Kopiraj kod";
-      kopirajButton.onclick = function () {
-        kopirajKod(this);
-      };
-      div.appendChild(kopirajButton);
-
-      zadaci.appendChild(div);
-
-      div.classList.add("animacija");
-      setTimeout(() => {
-        div.classList.add("active");
-      }, 10 * (i + 1));
+  setTimeout(() => {
+    div.classList.add("active");
+  }, 10 * (i + 1));
 }
 
 const programskiJezici = [...new Set(htmlSadrzaj.map((zadatak) => zadatak.jezik))];
@@ -161,29 +62,108 @@ function generisiSelect() {
     selectJezik.appendChild(jezikOption);
   }
 }
+/*
+const nekiString = [
+"moj je tata",
+"vi se potrudite",
+"nema niko muda",
+"moj je tajo",
+"moj je stari",
+];
+const nekiOdgovor = [ 
+"Zlocinac iz rata",
+"Pa ga osudite",
+"Da vodi ga do suda",
+"Po Bosni osvaj'o",
+"Opasan u stvari",
+];
+const nekaBoja = [
+"red",
+"red",
+"red",
+"red",
+"red",
+];
+const nekiLink = [
+"https://www.youtube.com/watch?v=ETQmQ1Ixv5Y",
+"https://www.youtube.com/watch?v=ETQmQ1Ixv5Y",
+"https://www.youtube.com/watch?v=ETQmQ1Ixv5Y",
+"https://www.youtube.com/watch?v=ETQmQ1Ixv5Y",
+"https://www.youtube.com/watch?v=ETQmQ1Ixv5Y",
+]
+
+const searchInput = document.getElementById('search');
+
+searchInput.addEventListener("input", function () {
+    const uneseniTekst = searchInput.value.toLowerCase();
+    let pronasaoOdgovor = false;
+      
+    for (let i = 0; i < nekiString.length; i++) {
+      if (uneseniTekst === nekiString[i]) {
+        naslov.innerHTML = nekiOdgovor[i];
+        naslov.style.color = nekaBoja[i];
+        window.location.href = nekiLink[i];
+        pronasaoOdgovor = true;
+        break;
+      }
+    }
+
+    if (!pronasaoOdgovor) {
+      naslov.innerHTML = "Sajt";
+      naslov.style.color = "white";
+   }
+});
+*/
+
+function kopirajKod(buttonElement) {
+  const preElement = buttonElement.previousElementSibling;
+  const range = document.createRange();
+  range.selectNodeContents(preElement);
+  const selection = window.getSelection();
+  selection.removeAllRanges();
+  selection.addRange(range);
+
+  try {
+    document.execCommand('copy');
+    const originalText = buttonElement.textContent;
+    buttonElement.textContent = 'Kopirano';
+    setTimeout(() => {
+      buttonElement.textContent = originalText;
+    }, 2000);
+  } 
+  catch (error) {
+    alert("Greška prilikom kopiranja koda.");
+  }
+  
+  selection.removeAllRanges();
+}
 
 
 function generisi() {
   zadaci.innerHTML = '';
   const searchInput = document.getElementById('search').value.toLowerCase().trim();
   const selectedLanguage = document.getElementById('selectJezik').value;
-
-  if (NewFirst) {
-    for (let i = 0; i < htmlSadrzaj.length; i++) {
-      if ((selectedLanguage === 'svi' || htmlSadrzaj[i].jezik === selectedLanguage) &&
+  
+  function filtrirajZadatke(i){
+   if ((selectedLanguage === 'svi' || htmlSadrzaj[i].jezik === selectedLanguage) &&
         htmlSadrzaj[i].naziv.toLowerCase().includes(searchInput)) {
-        mrs(i);
+        generisiBlok(i);
       }
+  }
+  
+  if (NewFirst){
+    for (let i = 0; i < htmlSadrzaj.length; i++){
+     filtrirajZadatke(i);
     }
-  } else {
-    for (let i = htmlSadrzaj.length - 1; i >= 0; i--) {
-      if ((selectedLanguage === 'svi' || htmlSadrzaj[i].jezik === selectedLanguage) &&
-        htmlSadrzaj[i].naziv.toLowerCase().includes(searchInput)) {
-        mrs(i);
-      }
+  }
+   else{
+    for (let i = htmlSadrzaj.length - 1; i >= 0; i--){
+     filtrirajZadatke(i);
     }
   }
 }
+
+
 
 function filtrirajPoNaslovu() {
   generisi();
@@ -191,38 +171,44 @@ function filtrirajPoNaslovu() {
 
 function filtrirajPoJeziku() {
   const selectJezik = document.getElementById("selectJezik");
-  const odabraniJezik = selectJezik.value;
-  zadaci.innerHTML = ''; 
-  if (odabraniJezik === "svi") {   
+  zadaci.innerHTML = '';
+  
+  if (selectJezik.value == "svi") {   
     generisi();
-  } else {
+  } 
+  else {
     for (let i = 0; i < htmlSadrzaj.length; i++) {
-      if (htmlSadrzaj[i].jezik === odabraniJezik) {
-        mrs(i);
+      if (htmlSadrzaj[i].jezik == selectJezik.value) {
+        generisiBlok(i);
       }
     }
   }
 }
 
 let tmp = true;
+
 function sort() {
   if (tmp) {
     dugmeSort.textContent = "Sortirano od najstarijeg";
-    NewFirst = false;
-    tmp = false;
-  } else {
+  } 
+  else {
     dugmeSort.textContent = "Sortirano od najnovijeg";
-    NewFirst = true;
-    tmp = true;
   }
-
+  
+  NewFirst=toggleBoolean(NewFirst);
+  tmp=toggleBoolean(tmp);
   generisi();
-  console.log(tmp);
+}
+
+function toggleBoolean(nekaPromenljiva) {
+  return !nekaPromenljiva;
 }
 
 const dugmeSort = document.querySelector("#dugmeSort");
 
-dugmeSort.addEventListener('click', function () { sort() });
+dugmeSort.addEventListener('click',function(){
+ sort();
+});
 
 generisiSelect();
 filtrirajPoJeziku();
