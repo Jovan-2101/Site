@@ -2,7 +2,7 @@ const htmlSadrzaj = [
    {
     naziv: "Palindrom",
     deskripcija: "Napisati program u JS koji provjerava da li je uneseni string palindrom ili ne",
-    jezik: "Javascript",
+    jezik: "JavaScript",
     kod:
 `function isPalindrome(str) {
   const cleanedStr = str.toLowerCase().replace(/[^a-z0-9]/g, '');
