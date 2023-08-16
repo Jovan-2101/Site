@@ -7,6 +7,33 @@ let NewFirst = true;
 
 let programskiJezici = [];
 
+function dodajZadatak(naziv, deskripcija, jezik, kod) {
+  const noviElement = {
+    naziv: naziv,
+    deskripcija: deskripcija,
+    jezik: jezik,
+    kod: kod
+  };
+
+  htmlSadrzaj.unshift(noviElement);
+}
+
+
+dodajZadatak(
+  "Novi zadatak",
+  "Ovo je opis novog zadatka",
+  "JavaScript",
+  `function 
+  noviZadatak() {\n  
+  // Implementacija novog zadatka\n"<}>"`
+);
+dodajZadatak(
+  "Novi zadatak",
+  "Ovo je opis novog zadatka",
+  "JavaScript",
+  `function noviZadatak() {\n  // Implementacija novog zadatka\n"<}>"`
+);
+
 function ucitajProgramskeJezike() {
   programskiJezici = [...new Set(htmlSadrzaj.map((zadatak) => zadatak.jezik))];
 }
@@ -14,10 +41,6 @@ function ucitajProgramskeJezike() {
 function escapeHTML(str) { 
   return str.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
-
-htmlSadrzaj.forEach((zadatak) => { // zbog znakova'<' i '>'
-  zadatak.kod = escapeHTML(zadatak.kod);
-});
 
 function generisiBlok(i) {
   const zadatak = htmlSadrzaj[i];
@@ -211,6 +234,9 @@ function prikazJezika(){
 }
 
 function main(){ //moze da sluzi za restart
+ htmlSadrzaj.forEach((zadatak) => { // zbog znakova'<' i '>'
+  zadatak.kod = escapeHTML(zadatak.kod);
+ });
  sortDugmeUpdate();
  ucitajProgramskeJezike();
  generisiSelect();
@@ -220,3 +246,5 @@ function main(){ //moze da sluzi za restart
 }
 
 main();
+
+

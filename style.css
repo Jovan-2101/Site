@@ -1,47 +1,48 @@
-html{
- color-scheme: dark !important;
- scrollbar-color: #454a4d #202324;
+html {
+  color-scheme: dark !important;
+  scrollbar-color: #454a4d #202324;
+  font-family: ubuntu;
 }
 
-body{
- margin:0px;
- text-align: center;
- background-color: rgba(24,26,27,255);
- color: white;
-}
- 
-.blok{
- background-color: rgba(24,26,50,255);
- width: 60%;
- margin: 20px auto;
- border-radius: 20px;
- padding: 10px;
- border: solid rgba(30,50,70,0.6); 10px;
+body {
+  margin: 0;
+  text-align: center;
+  background-color: rgba(24, 26, 27, 255);
+  color: white;
 }
 
-pre{
- text-align: start;
- font-size:14px;
- background-color: rgba(24,26,60,255);
- border: solid rgba(30,50,70,0.6); 4px;
- width: auto;
- padding:10px;
- border-radius:10px;
- margin: auto;
+.blok {
+  background-color: rgba(24, 26, 50, 255);
+  width: 60%;
+  margin: 20px auto;
+  border-radius: 20px;
+  padding: 10px;
+  border: solid rgba(30, 50, 70, 0.6) 10px;
 }
 
-button{
- margin:10px;
- border-radius:20px;
- background-color: rgb(255);
- border: solid rgba(30,50,70,0.6); 4px;
- font-size:14px;
- transition: 0.8s;
+pre {
+  text-align: start;
+  font-size: 14px;
+  background-color: rgba(24, 26, 60, 255);
+  border: solid rgba(30, 50, 70, 0.6) 4px;
+  width: auto;
+  padding: 10px;
+  border-radius: 10px;
+  margin: auto;
 }
 
-button:hover{
- background-color: rgba(200,200,245,0.2);
- border: solid rgb(200,200,255); 4px;
+button {
+  margin: 10px;
+  border-radius: 20px;
+  background-color: rgb(255);
+  border: solid rgba(30, 50, 70, 0.6) 4px;
+  font-size: 14px;
+  transition: 0.8s;
+}
+
+button:hover {
+  background-color: rgba(200, 200, 245, 0.2);
+  border: solid rgb(200, 200, 255) 4px;
 }
 
 .animacija {
@@ -49,43 +50,67 @@ button:hover{
   transition: 0.8s;
 }
 
-
 .animacija.active {
   transform: scale(1);
 }
 
 #opcije {
-  background-color: rgba(24,26,50,255);
-  border: solid rgba(30,50,70,0.6); 4px;
+  background-color: rgba(24, 26, 50, 255);
+  border: solid rgba(30, 50, 70, 0.6) 4px;
   border-radius: 20px;
   padding: 10px;
-  width:30%;
+  width: 30%;
   display: flex;
   margin: auto;
   flex-direction: column;
   transition: 1s;
 }
 
-#opcije *{
- width:80%;
- margin: 10px auto;
+#opcije * {
+  width: 80%;
+  margin: 10px auto;
 }
 
-#opcije button{
- width:60%;
+#opcije button {
+  width: 60%;
 }
 
-input{
- border-radius:4px;
- outline: none;
+input {
+  border-radius: 4px;
+  outline: none;
 }
 
-#jeziciInfo{
- padding: 0px;
- width: 30%;
- position: absolute;
- border-radius:20px;
- background-color: rgba(24,26,50,255);
- border: solid rgba(30,50,70,0.6); 4px;
+#jeziciInfo {
+  padding: 0;
+  width: 30%;
+  position: absolute;
+  border-radius: 20px;
+  background-color: rgba(24, 26, 50, 255);
+  border: solid rgba(30, 50, 70, 0.6) 4px;
+}
+
+/* Responzivnost za mobilne uređaje */
+@media only screen and (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  .blok {
+    width: 80%;
+  }
+
+  #opcije {
+    width: 80%;
+  }
+
+  #opcije button {
+    width: 100%;
+  }
+
+  #jeziciInfo {
+    width: 80%;
+    position: relative;
+    margin: 20px auto;
+  }
 }
 
