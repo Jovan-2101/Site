@@ -13,8 +13,8 @@ function ucitajProgramskeJezike() {
 
 function escapeHTML(str) { 
   return str.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-function generisiBlok(i) {
-  }, 10 * (i + 1));
+generisiBlok(i) 
+   10 * (i + 1));
 }
 
 function generisiSelect() {
