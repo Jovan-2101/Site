@@ -13,8 +13,6 @@ function ucitajProgramskeJezike() {
 
 function escapeHTML(str) { 
   return str.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-generisiBlok(i) 
-   10 * (i + 1));
 }
 
 function generisiSelect() {
